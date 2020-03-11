@@ -11,6 +11,7 @@ import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
 
 
 
@@ -23,6 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             configuration.server = "https://mighty-ocean-30289.herokuapp.com//parse"
         })
         )
+        
+      if PFUser.current() != nil {
+               let main = UIStoryboard(name: "Main", bundle: nil)
+               let feedNavigationController = main.instantiateViewController(withIdentifier: "FeedNavigationController")
+               
+        self.window?.rootViewController = feedNavigationController
+           }
         return true
     }
 
